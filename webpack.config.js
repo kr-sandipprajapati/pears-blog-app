@@ -21,10 +21,18 @@ export default {
         exclude: /node_modules/,
         use: "babel-loader",
       },
+      {
+        test: /\.scss$/, // Add this rule for SCSS files
+        use: [
+          'style-loader', // Injects CSS into the DOM
+          'css-loader',   // Turns CSS into CommonJS
+          'sass-loader',  // Compiles Sass to CSS
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".scss"],
   },
   mode: "development",
 };

@@ -14,7 +14,11 @@
   "scripts": {
     "build": "webpack",
     "dev": "pear run -d .",
-    "test": "brittle test/*.test.js"
+    "test": "brittle test/*.test.js",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,scss}'",
+    "format:check": "prettier --check 'src/**/*.{js,jsx,ts,tsx,scss}'"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -37,6 +41,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "globals": "^15.9.0",
     "pear-interface": "^1.0.0",
+    "prettier": "^3.3.3",
     "sass": "^1.77.8",
     "sass-loader": "^16.0.1",
     "style-loader": "^4.0.0",

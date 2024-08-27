@@ -1,0 +1,15 @@
+.Icons {
+    &--logo-64 {
+        background-image: url("/assets/blog-logo.svg");
+        width: 64px;
+        height: 64px;
+        background-repeat: no-repeat;
+    }
+
+    &--plus-24 {
+        background-image: url("/assets/plus-icon.svg");
+        width: 24px;
+        height: 24px;
+        background-repeat: no-repeat;
+    }
+}

@@ -1,0 +1,16 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: slateblue;
+
+    &--add-blog {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: large;
+        color: white;
+        text-decoration: none;
+        margin: 0.5em;
+    }
+}

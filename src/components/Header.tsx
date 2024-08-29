@@ -7,6 +7,9 @@ export default function Header() {
       <Link to="/">
         <div className="Icons--logo-64" />
       </Link>
+      <Link to="/pears" className="Header--add-blog">
+        Pears Store
+      </Link>
       <Link to="/add-blog" className="Header--add-blog">
         Add Blog
       </Link>

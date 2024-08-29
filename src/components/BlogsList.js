@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BlogCard from './BlogCard';
 import core from '../pears/core';
 
-function BlogsList({ blogs }) {
+function BlogsList() {
   const [data, setData] = useState();
   useEffect(() => {
     const readSteam = async () => {
@@ -17,9 +17,10 @@ function BlogsList({ blogs }) {
   }, []);
   return (
     <div>
-      {blogs.map((blog) => (
+      {/* {blogs.map((blog) => (
         <BlogCard key={blog.author.concat(blog.publishedAt)} blog={blog} />
-      ))}
+      ))} */}
+      BlogCard
     </div>
   );
 }

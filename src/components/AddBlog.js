@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import BlogData from '../tempblog.json';
+// import BlogData from '../tempblog.json';
 import core from '../pears/core';
 
 function AddBlog() {

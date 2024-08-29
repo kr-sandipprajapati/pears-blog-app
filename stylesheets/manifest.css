@@ -1,0 +1,79 @@
+body {
+  background-color: white;
+  --title-bar-height: 42px;
+  padding-top: var(--title-bar-height);
+}
+
+#bar {
+  background: rgba(55, 60, 72, 0.6);
+  backdrop-filter: blur(64px);
+  -webkit-app-region: drag;
+  height: var(--title-bar-height);
+  padding: 0;
+  color: #FFF;
+  white-space: nowrap;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+pear-ctrl[data-platform=darwin] {
+  margin-top: 18px;
+  margin-left: 12px;
+}
+
+.Blog--card {
+  margin: 1em;
+  border: 1px solid black;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+.Blog--title {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.Blog--details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Icons--logo-64 {
+  background-image: url("/assets/blog-logo.svg");
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat;
+}
+.Icons--plus-24 {
+  background-image: url("/assets/plus-icon.svg");
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: slateblue;
+}
+.Header--add-blog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  color: white;
+  text-decoration: none;
+  margin: 0.5em;
+}
+
+.Button--no-border {
+  border: none;
+  background: none;
+  margin: 0.5em;
+}
+
+/*# sourceMappingURL=manifest.css.map */

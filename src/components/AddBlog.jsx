@@ -1,17 +1,18 @@
 import React, { useReducer } from 'react';
 import BlogData from '../tempblog.json';
+import core from '../pears/core';
 
 function AddBlog() {
-  enum BLOG_DETAILS {
-    TITLE,
-    AUTHOR,
-    SOURCE,
-    URL,
-    DESCRIPION,
-    CONTENT,
-    PUBLISH_AT,
-  }
-  const blogReducer = (state: any, action: any) => {
+  const BLOG_DETAILS = {
+    TITLE: 1,
+    AUTHOR: 2,
+    SOURCE: 3,
+    URL: 4,
+    DESCRIPION: 5,
+    CONTENT: 6,
+    PUBLISH_AT: 7,
+  };
+  const blogReducer = (state, action) => {
     switch (action.type) {
       case BLOG_DETAILS.TITLE:
         return {
@@ -80,7 +81,9 @@ function AddBlog() {
             type: BLOG_DETAILS.PUBLISH_AT,
           });
 
-          BlogData.push(state);
+          // BlogData.push(state);
+          console.log("🚀 ~ AddBlog ~ Buffer.from(Sandip):", Buffer.from("Sandip"))
+          core.append(Buffer.from("Sandip"));
         }}
       >
         <div>

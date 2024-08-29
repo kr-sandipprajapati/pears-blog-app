@@ -1,10 +1,6 @@
 import React from 'react';
-import { IBlog } from '../types/Blog';
 
-type PropsType = {
-  blog: IBlog;
-};
-export default function BlogCard({ blog }: PropsType) {
+export default function BlogCard({ blog }) {
   return (
     <div className="Blog--card">
       <div className="info">

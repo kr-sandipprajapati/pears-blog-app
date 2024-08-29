@@ -1,0 +1,19 @@
+.Blog {
+    &--card {
+        margin: 1em;
+        border: 1px solid black;
+        padding: 1em;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &--title {
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+
+    &--details {
+        display: flex;
+        justify-content: space-between;
+    }
+}

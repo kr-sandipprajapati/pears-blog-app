@@ -1,9 +1,10 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import BlogData from '../tempblog.json';
 import core from '../pears/core';
 
 function AddBlog() {
   const BLOG_DETAILS = {
+    INITITAL_STATE: 0,
     TITLE: 1,
     AUTHOR: 2,
     SOURCE: 3,
@@ -11,6 +12,20 @@ function AddBlog() {
     DESCRIPION: 5,
     CONTENT: 6,
     PUBLISH_AT: 7,
+  };
+
+  const InititalState = {
+    title: '',
+    author: '',
+    source: {
+      id: null,
+      name: '',
+    },
+    urlToImage: '',
+    url: '',
+    description: '',
+    content: '',
+    publishedAt: '',
   };
   const blogReducer = (state, action) => {
     switch (action.type) {
@@ -53,25 +68,28 @@ function AddBlog() {
           urlToImage: action.value,
           url: action.value,
         };
+      case BLOG_DETAILS.INITITAL_STATE:
+        return InititalState;
       default:
         new Error('unknown type');
         break;
     }
     return state;
   };
-  const [state, dispatch] = useReducer(blogReducer, {
-    title: '',
-    author: '',
-    source: {
-      id: null,
-      name: '',
-    },
-    urlToImage: '',
-    url: '',
-    description: '',
-    content: '',
-    publishedAt: '',
-  });
+  const [state, dispatch] = useReducer(blogReducer, InititalState);
+  const [isSubmitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (isSubmitted) {
+      core.append(Buffer.from(JSON.stringify(state)));
+      console.log('blog added');
+      console.log('🚀 ~ useEffect ~ state:', state);
+      dispatch({
+        type: BLOG_DETAILS.INITITAL_STATE,
+      });
+      setSubmitted(false);
+    }
+  }, [isSubmitted]);
   return (
     <div>
       <form
@@ -80,10 +98,7 @@ function AddBlog() {
           dispatch({
             type: BLOG_DETAILS.PUBLISH_AT,
           });
-
-          // BlogData.push(state);
-          console.log("🚀 ~ AddBlog ~ Buffer.from(Sandip):", Buffer.from("Sandip"))
-          core.append(Buffer.from("Sandip"));
+          setSubmitted(true);
         }}
       >
         <div>

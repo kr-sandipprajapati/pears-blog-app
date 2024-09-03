@@ -1,7 +1,7 @@
-import RAM from 'random-access-memory';
 import HyperCore from 'hypercore';
+import path from 'path';
 
-const core = new HyperCore((filename) => new RAM());
+const core = new HyperCore(path.join(Pear.config.storage, "pear-blogs-test-2"));
 await core.ready();
 
 export default core;

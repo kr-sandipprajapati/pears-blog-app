@@ -8,7 +8,6 @@
   
 //   const coreSetup = async () => {
 //     if (coreRef.current === null) {
-//       console.log('🚀 ~ coreSetup ~ coreRef.current:', coreRef.current);
 //       coreRef.current = new HyperCore(
 //         path.join(Pear.config.storage, 'blogs-data-test-7'),
 //       );
@@ -23,10 +22,7 @@
 //     // Optional: Handle any cleanup if necessary
 //     return () => {
 //       if (coreRef.current) {
-//         console.log("🚀 ~ return ~ coreRef.current:", coreRef.current)
-//         console.log('Cleaning up HyperCore instance');
 //         coreRef.current.close(() => {
-//           console.log('HyperCore instance closed');
 //           coreRef.current = null;
 //         });
 //       }

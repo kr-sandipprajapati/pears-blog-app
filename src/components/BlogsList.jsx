@@ -1,26 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import BlogCard from './BlogCard';
 import core from '../pears/core';
 
 function BlogsList() {
   const [blogs, setBlogs] = useState([]);
+  const isMounted = useRef(false);
   useEffect(() => {
-    const readSteam = async () => {
-      const blogArray = [];
-      const d = core.createReadStream();
-      for await (const a of d) {
-        const dval = new TextDecoder('utf-8').decode(a);
-        blogArray.push(JSON.parse(dval));
-      }
+    if (!isMounted.current) {
+      isMounted.current = true; // First render, skip the effect
 
-      setBlogs(blogArray);
-    };
-    readSteam();
+      // This return is to prevent running the effect on the first render
+      return;
+    }
+
+    const d = core.createReadStream({
+      live: true,
+    });
+
+    d.on('data', (state) => {
+      const dval = new TextDecoder('utf-8').decode(state);
+      setBlogs((prevState) => [...prevState, JSON.parse(dval)]);
+    });
+
+    Pear.teardown(() => {
+      d.destroy(); // Close the stream
+      core.close(); // Close the feed
+    });
   }, []);
   return (
     <div>
       {blogs?.map((blog) => (
-        <BlogCard key={blog.author.concat(blog.publishedAt)} blog={blog} />
+        <BlogCard key={blog.id} blog={blog} />
       ))}
     </div>
   );

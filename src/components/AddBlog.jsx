@@ -1,11 +1,11 @@
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useReducer, useState, useEffect, useRef } from 'react';
 // import BlogData from '../tempblog.json';
 import core from '../pears/core';
-import useHyperSwarm from '../hooks/useHyperSwarm';
-// import swarm from '../pears/swarm';
+// import useHyperSwarm from '../hooks/useHyperSwarm';
+import swarm from '../pears/swarm';
 
 function AddBlog() {
-  const swarm = useHyperSwarm();
+  // const swarm = useHyperSwarm();
   const BLOG_DETAILS = {
     INITITAL_STATE: 0,
     TITLE: 1,
@@ -64,6 +64,7 @@ function AddBlog() {
         return {
           ...state,
           publishedAt: new Date().toUTCString(),
+          id: Date.now()
         };
       case BLOG_DETAILS.URL:
         return {
@@ -87,13 +88,10 @@ function AddBlog() {
     if (isSubmitted) {
       core.append(Buffer.from(JSON.stringify(state)));
       const peers = [...swarm.connections];
-      console.log("🚀 ~ useEffect ~ peers:", peers)
       for (const peer of peers) {
-        console.log('🚀 ~ useEffect ~ peer:', peer);
         peer.write(JSON.stringify(state));
       }
       console.log('blog added');
-      console.log('🚀 ~ useEffect ~ state:', state);
       dispatch({
         type: BLOG_DETAILS.INITITAL_STATE,
       });

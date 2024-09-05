@@ -6,7 +6,6 @@
 // import RAM from 'random-access-memory';
 
 // export default function Pears() {
-//   // console.log('🚀 ~ Pear:', (window as any).Pear);
 //   // const Pear = (window as any).Pear;
 //   // const core = useRef(new CoreStore(path.join(Pear.config.storage, 'storage')));
 //   useEffect(() => {
@@ -21,7 +20,6 @@
 //       // const core = new HyperCore((filename) => new RAM());
 //       const core = new HyperCore(path.join(Pear.config.storage, 'storage'));
 //       await core.ready();
-//       console.log('🚀 ~ pearsCallback ~ bee:', core);
 //     };
 //     pearsCallback();
 //   }, []);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import BlogCard from './BlogCard';
 import core from '../pears/core';
+import base from '../pears/base';
 
 function BlogsList() {
   const [blogs, setBlogs] = useState([]);
@@ -12,6 +13,17 @@ function BlogsList() {
       // This return is to prevent running the effect on the first render
       return;
     }
+
+    console.log('🚀 ~ basestream ~ base.store:', base.store, base.local, base);
+
+    // const coredata = base.local.createReadStream({
+    //   live: true,
+    // });
+
+    // coredata.on("data", (data) => {
+    //   const dataval = new TextDecoder('utf-8').decode(data);
+    //   console.log("🚀 ~ coredata.on ~ dataval:", dataval)
+    // })
 
     const d = core.createReadStream({
       live: true,

@@ -4,7 +4,8 @@ import Header from '../components/Header';
 import BlogsList from '../components/BlogsList';
 import AddBlog from '../components/AddBlog';
 import swarm from '../pears/swarm';
-import core from '../pears/core';
+// import core from '../pears/core';
+import base from '../pears/base';
 
 export default function Main() {
   const isMounted = useRef(false);
@@ -16,11 +17,12 @@ export default function Main() {
       return;
     }
     swarm.on('connection', (peer) => {
-      core.replicate(peer);
-      peer.on('data', async (state) => {
-        console.log('🚀 ~ peer.on ~ state:', state);
-        await core.append(Buffer.from(state));
-      });
+      console.log('🚀 ~ swarm.on ~ peer:', peer);
+      base.store.replicate(peer);
+      // peer.on('data', async (state) => {
+      //   console.log('🚀 ~ peer.on ~ state:', state);
+      //   await base.append(Buffer.from(state));
+      // });
     });
   }, []);
   return (

@@ -1,11 +1,8 @@
-import React, { useReducer, useState, useEffect, useRef } from 'react';
-// import BlogData from '../tempblog.json';
-import core from '../pears/core';
-// import useHyperSwarm from '../hooks/useHyperSwarm';
+import React, { useReducer, useState, useEffect } from 'react';
 import swarm from '../pears/swarm';
+import { mainBase } from '../pears/base';
 
 function AddBlog() {
-  // const swarm = useHyperSwarm();
   const BLOG_DETAILS = {
     INITITAL_STATE: 0,
     TITLE: 1,
@@ -18,6 +15,7 @@ function AddBlog() {
   };
 
   const InititalState = {
+    id: '',
     title: '',
     author: '',
     source: {
@@ -64,7 +62,7 @@ function AddBlog() {
         return {
           ...state,
           publishedAt: new Date().toUTCString(),
-          id: Date.now()
+          id: Date.now(),
         };
       case BLOG_DETAILS.URL:
         return {
@@ -86,11 +84,12 @@ function AddBlog() {
 
   useEffect(() => {
     if (isSubmitted) {
-      core.append(Buffer.from(JSON.stringify(state)));
-      const peers = [...swarm.connections];
-      for (const peer of peers) {
-        peer.write(JSON.stringify(state));
-      }
+      const appendInBase = async () => {
+        await mainBase
+          .append(Buffer.from(JSON.stringify(state)))
+          .catch((err) => console.log('error message: ', err));
+      };
+      appendInBase();
       console.log('blog added');
       dispatch({
         type: BLOG_DETAILS.INITITAL_STATE,

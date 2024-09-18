@@ -1,11 +1,13 @@
+/* eslint-disable no-undef */
 import Hyperswarm from 'hyperswarm';
-// import b4a from 'b4a';
-import config from '../config/config.development';
-const swarm = new Hyperswarm();
-import hic from 'hypercore-id-encoding';
+import {
+  mainBase
+} from './base';
 
-const discovery = swarm.join(hic.decode(config.topic, 'hex'));
-await discovery.flushed()
+const swarm = new Hyperswarm();
+
+const discovery = swarm.join(mainBase.bootstrap,  { server: true, client: true });
+discovery.flushed();
 
 Pear.teardown(() => {
   swarm.destroy();

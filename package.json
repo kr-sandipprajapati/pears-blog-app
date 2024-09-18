@@ -49,6 +49,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "autobase": "^6.5.3",
     "b4a": "^1.6.6",
     "corestore": "^6.18.4",
     "fsctl": "^2.0.0",

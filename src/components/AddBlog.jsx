@@ -1,4 +1,5 @@
 import React, { useReducer, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import swarm from '../pears/swarm';
 import { mainBase } from '../pears/base';
 
@@ -80,6 +81,7 @@ function AddBlog() {
   };
   const [state, dispatch] = useReducer(blogReducer, InititalState);
   const [isSubmitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
   console.log('swarm connections: ', swarm.connections);
 
   useEffect(() => {
@@ -95,6 +97,7 @@ function AddBlog() {
         type: BLOG_DETAILS.INITITAL_STATE,
       });
       setSubmitted(false);
+      navigate('/')
     }
   }, [isSubmitted]);
   return (
@@ -199,7 +202,10 @@ function AddBlog() {
           />
         </div>
         <div>
-          <input type="submit" name="Submit" />
+          <button type="submit" name="Submit">
+            {' '}
+            Submit{' '}
+          </button>
         </div>
       </form>
     </div>

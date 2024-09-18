@@ -5,6 +5,7 @@ import BlogsList from '../components/BlogsList';
 import AddBlog from '../components/AddBlog';
 import swarm from '../pears/swarm';
 import { mainBase } from '../pears/base';
+import Blog from '../components/Blog';
 
 export default function Main() {
   const isMounted = useRef(false);
@@ -25,6 +26,9 @@ export default function Main() {
       <Routes>
         <Route index element={<BlogsList />} />
         <Route path="add-blog" element={<AddBlog />} />
+        <Route path="blogs"> 
+          <Route path=":blogId" element={<Blog />} />
+        </Route>
       </Routes>
     </Router>
   );

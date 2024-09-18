@@ -5,6 +5,7 @@
         padding: 1em;
         display: flex;
         justify-content: space-between;
+        text-decoration: none;
     }
 
     &--title {
@@ -15,5 +16,9 @@
     &--details {
         display: flex;
         justify-content: space-between;
+    }
+
+    &--info {
+        width: -webkit-fill-available;
     }
 }

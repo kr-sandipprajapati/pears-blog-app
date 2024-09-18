@@ -1,11 +1,11 @@
 body {
-  background-color: white;
+  background-color: #cfd8dc;
   --title-bar-height: 42px;
   padding-top: var(--title-bar-height);
 }
 
 #bar {
-  background: rgba(55, 60, 72, 0.6);
+  background: #263238;
   backdrop-filter: blur(64px);
   -webkit-app-region: drag;
   height: var(--title-bar-height);

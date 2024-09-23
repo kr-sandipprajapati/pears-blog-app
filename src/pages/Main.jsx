@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from '../components/Header';
 import BlogsList from '../components/BlogsList';
-import AddBlog from '../components/AddBlog';
+import AddBlog from '../components/quill/AddBlog';
 import swarm from '../pears/swarm';
 import { mainBase } from '../pears/base';
 import Blog from '../components/Blog';
@@ -16,8 +16,8 @@ export default function Main() {
       // This return is to prevent running the effect on the first render
       return;
     }
-    swarm.on('connection', (peer) =>  {
-      mainBase.replicate(peer)
+    swarm.on('connection', (peer) => {
+      mainBase.replicate(peer);
     });
   }, []);
   return (
@@ -26,7 +26,7 @@ export default function Main() {
       <Routes>
         <Route index element={<BlogsList />} />
         <Route path="add-blog" element={<AddBlog />} />
-        <Route path="blogs"> 
+        <Route path="blogs">
           <Route path=":blogId" element={<Blog />} />
         </Route>
       </Routes>

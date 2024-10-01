@@ -10,17 +10,11 @@ const Blog = () => {
   );
   return (
     <div className="Blog--container">
-      <div className="Blog--title">{blog.title}</div>
-      <div className="Blog--details Blog--details__border">
-        <div>
-          <div className="author">{blog.author}</div>
-          <div className="time">{blog.publishedAt}</div>
-        </div>
-        <div className="source">{blog.source.name}</div>
+      <div dangerouslySetInnerHTML={{ __html: blog.title }} ></div>
+      <div className="Blog--details">
+        <div>{blog.timestamp}</div>
       </div>
-      <img className="Blog--image__large" src={blog.urlToImage} />
-      <div className="description">{blog.description}</div>
-      <div className="content">{blog.content}</div>
+      <div className="Blog--content" dangerouslySetInnerHTML={{ __html: blog.content }} />
     </div>
   );
 };

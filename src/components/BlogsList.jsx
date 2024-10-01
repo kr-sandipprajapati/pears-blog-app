@@ -45,8 +45,8 @@ function BlogsList() {
   }, [isUpdate]);
   return (
     <div>
-      {blogs?.map((blog) => (
-        <BlogCard key={blog.id} blog={blog} />
+      {blogs?.map((blog, index) => (
+        <BlogCard key={index} blog={blog} />
       ))}
     </div>
   );

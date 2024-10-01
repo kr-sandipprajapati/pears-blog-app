@@ -5,15 +5,8 @@ export default function BlogCard({ blog }) {
   return (
     <Link to={'/blogs/'.concat(blog.index.toString())} className="Blog--card">
       <div className="Blog--info">
-        <div className="Blog--title">{blog.title}</div>
-        <div className="Blog--details">
-          <div >{blog.author}</div>
-          <div >{blog.publishedAt}</div>
-        </div>
-        <div >{blog.description}</div>
-      </div>
-      <div >
-        <img src={blog.urlToImage} width={100} height={100} />
+        <div dangerouslySetInnerHTML={{ __html: blog.title }} />
+        <div>{blog.timestamp}</div>
       </div>
     </Link>
   );

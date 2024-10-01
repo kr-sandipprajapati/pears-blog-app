@@ -4,4 +4,36 @@
         background: none;
         margin: 0.5em;
     }
+
+    &--div {
+        display: flex;
+        justify-content: end;
+    }
+
+    &--submit {
+        padding-block: 1em;
+        padding-inline: 2em;
+        background-color: darkgrey;
+        color: floralwhite;
+        border: none;
+        border-radius: 0.7em;
+        margin-block: 1em;
+        cursor: pointer;
+    }
+
+    &--blurred-editor .ql-toolbar {
+        display: none;
+    }
+    
+    &--blurred-editor .ql-editor.ql-blank::before{
+       font-style: normal;
+    }
+
+    &--blurred-editor .ql-toolbar.ql-snow + .ql-container.ql-snow {
+        border-top: 1px solid #ccc;
+    }
+
+    &--blurred-editor .ql-editor {
+        font-size: 1.5em;
+    }
 }
